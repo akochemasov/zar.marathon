@@ -15,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       { test: /\.[tj]sx?$/, use: ['ts-loader'] },
-      { test: /\.css$/, use: [
+      { test: /\.(s*)css$/, use: [
         'style-loader', 
         {
           loader: 'css-loader',
@@ -26,7 +26,8 @@ module.exports = {
               auto: /\.modules\.w+$/i,
             }
           }
-        }
+        },
+        'sass-loader'
       ]}
     ]
   },
