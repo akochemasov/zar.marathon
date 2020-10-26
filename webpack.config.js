@@ -21,5 +21,11 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: path.resolve(__dirname, 'public/index.html')
     })
-  ]
+  ],
+  devServer: {
+    port: 3000,
+    open: true,
+    hot: true
+  },
+  devtool: 'source-map'
 }
