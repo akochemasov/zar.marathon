@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './custom.css';
-import style from './App.modules.css';
+import style from './App.modules.scss';
 
 const App = () => {
   return (
