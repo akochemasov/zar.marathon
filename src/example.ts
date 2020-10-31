@@ -2,9 +2,13 @@
 const concat = (str1: string, str2: string):string => `${str1}${str2}`;
 
 //Интерфейс
+interface MyArray<T> {
+    [n: number]: T;
+}
+
 interface FieldsInteface {
     howIDoIt: string,
-    simeArray: any[]
+    simeArray: MyArray<string | number>
 }
 
 interface HomeTaskInterface extends FieldsInteface {
