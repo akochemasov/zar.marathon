@@ -2,15 +2,9 @@
 const concat = (str1:string, str2:string):string => `${str1} ${str2}`;
 
 //Интерфейс
-type OrderedArray<T> = Array<T> & {
-    0: string;
-    1: string | number;
-    2?: number
-}
-
 interface FieldsInteface {
     howIDoIt: string,
-    simeArray: OrderedArray<any>
+    simeArray: any[]
 }
 
 interface HomeTaskInterface extends FieldsInteface {
