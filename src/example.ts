@@ -25,7 +25,7 @@ interface MyArray<T> {
 
     map<U>(fn: (el: T) => U): U[];
 
-    reduce<U>(fn: (acc: T, el: T) => U, acc: T): U[]
+    reduce<U>(fn: (acc: U, el: T) => U, acc: U): U[]
 }
 
 const tsArr: MyArray<number> = [1, 2, 3, 4, 5];
