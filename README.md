@@ -6,6 +6,18 @@
 yarn run start
 ```
 
+Конвертирование TS-файлов в JS
+
+```shell
+tsc src/example.ts
+```
+
+Запуск TS-файлов
+
+```
+npx ts-node src/example.ts
+```
+
 ## Build
 
 Build dev
