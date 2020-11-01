@@ -6,10 +6,16 @@
 yarn run start
 ```
 
-Для проверки работы TS-файлов
+Конвертирование TS-файлов в JS
+
 ```shell
 tsc src/example.ts
-node src/example.js
+```
+
+Запуск TS-файлов
+
+```
+npx ts-node src/example.ts
 ```
 
 ## Build
