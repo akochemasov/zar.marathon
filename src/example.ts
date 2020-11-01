@@ -1,5 +1,6 @@
 //Объединение 2х строк
 const concat = (str1: string, str2: string):string => `${str1}${str2}`;
+console.log('concat:', concat('Hello ', 'World'));
 
 //Интерфейс
 interface FieldsInteface {
@@ -16,6 +17,7 @@ const MyHometask: HomeTaskInterface = {
     simeArray: ["string one", "string two", 42],
     withData: [{ howIDoIt: "I Do It Wel", simeArray: ["string one", 23] }],
 }
+console.log('MyHometask:', MyHometask);
 
 //Generic
 interface MyArray<T> {
@@ -27,6 +29,6 @@ interface MyArray<T> {
 }
 
 const tsArr: MyArray<number> = [1, 2, 3, 4, 5];
-console.log(tsArr.map((i) => i + 1));
-console.log(tsArr.map((i) => `${i} + 1`));
-console.log(tsArr.reduce((acc, i) => acc + i, 0));
+console.log('map:', tsArr.map((i) => i + 1));
+console.log('map:', tsArr.map((i) => `${i} + 1`));
+console.log('reduce:', tsArr.reduce((acc, i) => acc + i, 0));
