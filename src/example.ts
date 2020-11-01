@@ -19,11 +19,14 @@ const MyHometask: HomeTaskInterface = {
 
 //Generic
 interface MyArray<T> {
-    [N: number]: T;
+    [n: number]: T;
 
     map<U>(fn: (el: T) => U): U[];
+
+    reduce<U>(fn: (acc: T, el: T) => U, acc: T): U[]
 }
 
 const tsArr: MyArray<number> = [1, 2, 3, 4, 5];
-tsArr.map((i) => i + 1);
-tsArr.map((i) => `${i} + 1`);
+console.log(tsArr.map((i) => i + 1));
+console.log(tsArr.map((i) => `${i} + 1`));
+console.log(tsArr.reduce((acc, i) => acc + i, 0));
