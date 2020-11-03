@@ -24,6 +24,12 @@ npx ts-node src/example.ts
 eslint .src/
 ```
 
+Форматирование кода
+
+```
+pretty-quick
+```
+
 ## Build
 
 Build dev
