@@ -14,12 +14,19 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.[tj]sx?$/, use: ['ts-loader'] },
-      { test: /\.css$/, use: [
+      {
+        test: /\.[tj]sx?$/,
+        use: ['ts-loader']
+      },
+      {
+        test: /\.css$/,
+        use: [
         'style-loader',
         'css-loader'
       ] },
-      { test: /\.scss$/, use: [
+      {
+        test: /\.scss$/,
+        use: [
         'style-loader',
         'css-modules-typescript-loader?modules',
         {
