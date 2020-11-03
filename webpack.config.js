@@ -17,6 +17,7 @@ module.exports = {
       { test: /\.[tj]sx?$/, use: ['ts-loader'] },
       { test: /\.(s*)css$/, use: [
         'style-loader',
+        'css-modules-typescript-loader?modules',
         {
           loader: 'css-loader',
           options: {
