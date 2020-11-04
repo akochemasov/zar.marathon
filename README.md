@@ -18,6 +18,18 @@ tsc src/example.ts
 npx ts-node src/example.ts
 ```
 
+Проверка кода
+
+```
+eslint .src/
+```
+
+Форматирование кода
+
+```
+pretty-quick
+```
+
 ## Build
 
 Build dev
