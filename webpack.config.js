@@ -16,14 +16,14 @@ module.exports = {
     rules: [
       { test: /\.[tj]sx?$/, use: ['ts-loader'] },
       { test: /\.(s*)css$/, use: [
-        'style-loader', 
+        'style-loader',
         {
           loader: 'css-loader',
           options: {
             modules: {
               mode: 'local',
               localIdentName: '[name]__[local]__[hash:base64:5]',
-              auto: /\.modules\.w+$/i,
+              auto: /\.modules\.\w+$/i,
             }
           }
         },
