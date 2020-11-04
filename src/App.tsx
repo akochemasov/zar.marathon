@@ -1,9 +1,16 @@
 import React from 'react';
+import Header from './components/header/Header';
+import Footer from './components/footer/Footer';
 
 import style from './App.modules.scss';
 
 const App = () => {
-  return <div className={style.app}>App</div>;
+  return (
+    <div className={style.app}>
+      <Header />
+      <Footer />
+    </div>
+  );
 };
 
 export default App;
