@@ -1,4 +1,5 @@
 import React from 'react';
+import { ReactComponent as Logo } from './assets/Logo.svg';
 
 import style from './Header.module.scss';
 
@@ -35,7 +36,9 @@ function Header() {
   return (
     <div className={style.root}>
       <div className={style.wrap}>
-        <div className={style.logo} />
+        <div className={style.logo}>
+          <Logo />
+        </div>
         <div className={style.menuWrap}>
           {MENU.map(({ link, value, id }) => (
             <a href={link} key={id} className={style.menuLink}>
