@@ -2,8 +2,8 @@ import React from 'react';
 
 import style from './Header.module.scss';
 
-function Header() {
+function Index() {
   return <div className={style.header}>Header</div>;
 }
 
-export default Header;
+export default Index;
