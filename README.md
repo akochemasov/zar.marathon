@@ -2,7 +2,7 @@
 
 ## Дизайн
 
-[Макет](https://www.figma.com/file/6t3nQuLTiNVWKqOMU2snEa/Pokedex-(Community)?node-id=2%3A5)
+[Макет](<https://www.figma.com/file/6t3nQuLTiNVWKqOMU2snEa/Pokedex-(Community)?node-id=2%3A5>)
 
 ## Development
 
@@ -13,13 +13,13 @@ yarn run start
 Проверка кода
 
 ```
-eslint .src/
+yarn eslint .src/
 ```
 
 Форматирование кода
 
 ```
-pretty-quick
+yarn pretty-quick
 ```
 
 ## Build
