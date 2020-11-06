@@ -2,7 +2,13 @@ import React from 'react';
 
 import style from './Header.module.scss';
 
-const MENU = [
+interface IMenu {
+  id: number;
+  value: string;
+  link: string;
+}
+
+const MENU: IMenu[] = [
   {
     id: 1,
     value: 'Home',
