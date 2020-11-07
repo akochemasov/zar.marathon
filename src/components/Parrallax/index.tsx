@@ -25,20 +25,40 @@ const Parallax = () => {
 
   return (
     <div className={style.root}>
-      <div className={style.smallPokeBall}>
+      <div
+        className={style.smallPokeBall}
+        style={{
+          transform: `translate(${screenY * 0.05}px, ${screenX * 0.05}px)`,
+        }}>
         <img src={SmallPokeBallPng} alt="Small PokeBall" />
       </div>
-      <div className={style.cloud}>
+      <div
+        className={style.cloud}
+        style={{
+          transform: `translate(${screenY * 0.04}px, ${screenX * 0.04}px)`,
+        }}>
         <img src={CloudPng} alt="Cloud PokeBall" />
       </div>
-      <div className={style.cloudBig}>
+      <div
+        className={style.cloudBig}
+        style={{
+          transform: `translate(${screenY * 0.03}px, ${screenX * 0.03}px)`,
+        }}>
         <img src={CloudBigPng} alt="Cloud Big PokeBall" />
       </div>
 
-      <div className={style.pokeBall}>
+      <div
+        className={style.pokeBall}
+        style={{
+          transform: `translate(${screenY * 0.01}px, ${screenX * 0.01}px)`,
+        }}>
         <img src={PokeBallPng} alt="Big PokeBall" />
       </div>
-      <div className={style.pikachu}>
+      <div
+        className={style.pikachu}
+        style={{
+          transform: `translate(${screenY * 0.01}px, ${screenX * 0.01}px)`,
+        }}>
         <img src={PikachuPng} alt="Cloud PokeBall" />
       </div>
     </div>
