@@ -9,8 +9,8 @@ import CloudBigPng from './assets/Cloud2.png';
 import PikachuPng from './assets/Pikachu.png';
 
 const Parallax = () => {
-  const [screenX, setScreenX] = useState(0);
-  const [screenY, setScreenY] = useState(0);
+  const [screenX, setScreenX] = useState(window.screen.width);
+  const [screenY, setScreenY] = useState(window.screen.height);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
