@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import style from './Parallax.module.scss';
 
@@ -9,6 +9,20 @@ import CloudBigPng from './assets/Cloud1.png';
 import PikachuPng from './assets/Pikachu.png';
 
 const Parallax = () => {
+  const [screenX, setScreenX] = useState(0);
+  const [screenY, setScreenY] = useState(0);
+
+  useEffect(() => {
+    const handleMouseMove = (event: MouseEvent) => {
+      setScreenX(event.screenX);
+      setScreenY(event.screenY);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [screenX, screenY]);
+
   return (
     <div className={style.root}>
       <div className={style.smallPokeBall}>
