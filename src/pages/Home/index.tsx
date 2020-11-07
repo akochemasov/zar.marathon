@@ -10,8 +10,8 @@ const Home = () => {
   return (
     <div className={style.root}>
       <Header />
-      <Layout>
-        <div>
+      <Layout className={style.contentWrap}>
+        <div className={style.contentText}>
           <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
           <Button
             onClick={() => {
@@ -20,10 +20,10 @@ const Home = () => {
             See pokemons
           </Button>
         </div>
+        <div className={style.contentParallax}>
+          <Parallax />
+        </div>
       </Layout>
-      <div>
-        <Parallax />
-      </div>
     </div>
   );
 };

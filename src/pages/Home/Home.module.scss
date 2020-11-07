@@ -4,3 +4,16 @@
   min-height: 100vh;
   background: linear-gradient(180deg, $color-third 0%, $color-primary 100%);
 }
+
+.contentWrap {
+  display: flex;
+  flex-direction: row;
+}
+
+.contentText {
+  cursor: default;
+}
+
+.contentParallax {
+  cursor: default;
+}
