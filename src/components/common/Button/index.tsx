@@ -2,9 +2,13 @@ import React from 'react';
 
 import style from './Button.module.scss';
 
-const Button: React.FC = ({ children }) => {
+interface ButtonProps {
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
+}
+
+const Button: React.FC<ButtonProps> = ({ children, onClick }) => {
   return (
-    <button type="button" className={style.root}>
+    <button type="button" className={style.root} onClick={onClick}>
       {children}
     </button>
   );

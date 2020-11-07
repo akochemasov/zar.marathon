@@ -8,7 +8,12 @@ const Home = () => {
   return (
     <div className={style.root}>
       <Header />
-      <Button>See pokemons</Button>
+      <Button
+        onClick={() => {
+          alert('click');
+        }}>
+        See pokemons
+      </Button>
     </div>
   );
 };
