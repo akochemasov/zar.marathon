@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import style from './Parallax.module.scss';
 
 import SmallPokeBallPng from './assets/PokeBall1.png';
-import CloudPng from './assets/Cloud2.png';
+import CloudPng from './assets/Cloud1.png';
 import PokeBallPng from './assets/PokeBall2.png';
-import CloudBigPng from './assets/Cloud1.png';
+import CloudBigPng from './assets/Cloud2.png';
 import PikachuPng from './assets/Pikachu.png';
 
 const Parallax = () => {
