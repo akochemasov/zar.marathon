@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../../components/Header';
-import Button from '../../components/common/Button';
+import Button from '../../components/Common/Button';
 
 import style from './Home.module.scss';
 
