@@ -2,7 +2,7 @@
 
 .root {
   border: none;
-  background: #73d677;
+  background: $color-btn-green;
   box-shadow: inset 0px -9px 0px rgba(0, 0, 0, 0.18);
   border-radius: 11px;
   height: 66px;
@@ -21,5 +21,27 @@
   &:active {
     box-shadow: inset 0px -6px 0px rgba(0, 0, 0, 0.18);
     padding-bottom: 6px;
+  }
+
+  &.big {
+    font-size: 23px;
+    height: 66px;
+  }
+
+  &.small {
+    font-size: 18px;
+    height: 50px;
+  }
+
+  &.width {
+    width: 100%;
+  }
+
+  &.green {
+    background: $color-btn-green;
+  }
+
+  &.yellow {
+    background: $color-btn-yellow;
   }
 }
