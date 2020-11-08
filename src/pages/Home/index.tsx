@@ -7,7 +7,11 @@ import Heading from '../../components/Heading';
 
 import style from './Home.module.scss';
 
-const Home = () => {
+const Home = (props: any) => {
+  const {
+    history: { push },
+  } = props;
+
   return (
     <div className={style.root}>
       <Header />
@@ -17,7 +21,12 @@ const Home = () => {
             <b>Find</b> all your favorite <b>Pokemon</b>
           </Heading>
           <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
-          <Button onClick={() => {}} size="big" color="green">
+          <Button
+            onClick={() => {
+              push('/pokedex');
+            }}
+            size="big"
+            color="green">
             See pokemons
           </Button>
         </div>
