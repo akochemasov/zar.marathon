@@ -1,4 +1,5 @@
 import React from 'react';
+import { navigate } from 'hookrouter';
 import Header from '../../components/Header';
 import Button from '../../components/Common/Button';
 import Parallax from '../../components/Parrallax';
@@ -7,11 +8,7 @@ import Heading from '../../components/Heading';
 
 import style from './Home.module.scss';
 
-const Home = (props: any) => {
-  const {
-    history: { push },
-  } = props;
-
+const Home = () => {
   return (
     <div className={style.root}>
       <Header />
@@ -23,7 +20,7 @@ const Home = (props: any) => {
           <p>You can know the type of Pokemon, its strengths, disadvantages and abilities</p>
           <Button
             onClick={() => {
-              push('/pokedex');
+              navigate('/pokedex');
             }}
             size="big"
             color="green">

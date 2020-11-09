@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { A } from 'hookrouter';
 import { ReactComponent as Logo } from './assets/Logo.svg';
 
 import style from './Header.module.scss';
@@ -42,9 +42,9 @@ function Header() {
         </div>
         <div className={style.menuWrap}>
           {MENU.map(({ link, value, id }) => (
-            <Link to={link} key={id} className={style.menuLink}>
+            <A href={link} key={id} className={style.menuLink}>
               {value}
-            </Link>
+            </A>
           ))}
         </div>
       </div>
