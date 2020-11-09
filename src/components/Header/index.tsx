@@ -1,11 +1,14 @@
 import React from 'react';
-import { A } from 'hookrouter';
+import { A, usePath } from 'hookrouter';
+import cn from 'classnames';
 import { GENERAL_MENU } from '../../routes';
 import { ReactComponent as Logo } from './assets/Logo.svg';
 
 import style from './Header.module.scss';
 
 function Header() {
+  const path = usePath();
+
   return (
     <div className={style.root}>
       <div className={style.wrap}>
@@ -14,7 +17,12 @@ function Header() {
         </div>
         <div className={style.menuWrap}>
           {GENERAL_MENU.map(({ link, title }) => (
-            <A href={link} key={title} className={style.menuLink}>
+            <A
+              href={link}
+              key={title}
+              className={cn(style.menuLink, {
+                [style.activeLink]: link === path,
+              })}>
               {title}
             </A>
           ))}
