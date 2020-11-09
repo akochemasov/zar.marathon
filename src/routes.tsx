@@ -3,7 +3,7 @@ import Home from './pages/Home';
 import Pokedex from './pages/Pokedex';
 import Empty from './pages/Empty';
 
-const MENU = [
+export const GENERAL_MENU = [
   {
     title: 'Home',
     link: '/',
@@ -26,7 +26,7 @@ const MENU = [
   },
 ];
 
-const routes = MENU.reduce((acc, item) => {
+const routes = GENERAL_MENU.reduce((acc, item) => {
   // @ts-ignore
   acc[item.link] = item.component;
   return acc;
