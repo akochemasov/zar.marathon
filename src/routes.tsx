@@ -3,7 +3,13 @@ import Home from './pages/Home';
 import Pokedex from './pages/Pokedex';
 import Empty from './pages/Empty';
 
-export const GENERAL_MENU = [
+interface IGeneralMenu {
+  title: string;
+  link: string;
+  component: () => JSX.Element;
+}
+
+export const GENERAL_MENU: IGeneralMenu[] = [
   {
     title: 'Home',
     link: '/',
@@ -26,8 +32,11 @@ export const GENERAL_MENU = [
   },
 ];
 
-const routes = GENERAL_MENU.reduce((acc, item) => {
-  // @ts-ignore
+interface IAccMenu {
+  [n: string]: () => JSX.Element;
+}
+
+const routes = GENERAL_MENU.reduce((acc: IAccMenu, item: IGeneralMenu) => {
   acc[item.link] = item.component;
   return acc;
 }, {});
