@@ -19,7 +19,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ titleName, attackValue, defen
     <div className={style.root}>
       <div className={style.infoWrap}>
         <Heading size="h3" className={style.titleName}>
-          {titleName}
+          {firstLetterUpper(titleName)}
         </Heading>
         <div className={style.statWrap}>
           <div className={style.statItem}>

@@ -11,16 +11,18 @@ const PokedexPage = () => {
     <div className={style.root}>
       <Header />
 
-      {POKEMONS.map((item) => (
-        <PokemonCard
-          key={item.id}
-          titleName={item.name}
-          attackValue={item.stats.attack}
-          defenseValue={item.stats.attack}
-          img={item.img}
-          types={item.types}
-        />
-      ))}
+      <div>
+        {POKEMONS.map((item) => (
+          <PokemonCard
+            key={item.id}
+            titleName={item.name}
+            attackValue={item.stats.attack}
+            defenseValue={item.stats.attack}
+            img={item.img}
+            types={item.types}
+          />
+        ))}
+      </div>
     </div>
   );
 };
