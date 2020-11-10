@@ -7,12 +7,12 @@ const PokemonCard = () => {
   return (
     <div className={style.root}>
       <div className={style.infoWrap}>
-        <Heading size="h2" className={style.titleName}>
+        <Heading size="h3" className={style.titleName}>
           Charmander
         </Heading>
         <div className={style.statWrap}>
           <div className={style.statItem}>
-            <div className={style.statValue}>52 sdfsfs</div>
+            <div className={style.statValue}>52</div>
             Attack
           </div>
           <div className={style.statItem}>
