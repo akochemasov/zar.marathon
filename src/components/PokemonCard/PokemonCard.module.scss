@@ -82,6 +82,12 @@
   }
 }
 
+.labelWrap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
 .label {
   background: $color-type-fire;
   box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.18);
@@ -93,7 +99,7 @@
   font-size: 12px;
   line-height: 14px;
   text-align: center;
-  color: #212121;
+  color: $color-dark;
   padding: 0 12px 2px;
   display: flex;
   justify-content: center;
@@ -101,11 +107,11 @@
   margin-right: 12px;
 
   &:last-child {
-    margin-right: 0;
+    margin-right: 10px;
   }
 
   &.grass {
-    background: $color-type-green;
+    background: $color-type-grass;
   }
 
   &.poison {
@@ -113,24 +119,30 @@
   }
 
   &.flying {
+    background: $color-type-fly;
+  }
 
+  &.grass {
+    background: $color-type-grass;
+  }
+
+  &.poison {
+    background: $color-type-poison;
+  }
+
+  &.flying {
+    background: $color-type-fly;
   }
 
   &.fire {
-
+    background: $color-type-fire;
   }
 
   &.water {
-
+    background: $color-type-water;
   }
 
   &.bug {
-
+    background: $color-type-bug;
   }
-}
-
-.labelWrap {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
 }

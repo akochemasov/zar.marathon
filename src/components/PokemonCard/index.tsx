@@ -1,4 +1,5 @@
 import React from 'react';
+import cn from 'classnames';
 import Heading from '../Heading';
 
 import style from './PokemonCard.module.scss';
@@ -21,7 +22,8 @@ const PokemonCard = () => {
           </div>
         </div>
         <div className={style.labelWrap}>
-          <span className={style.label}>Fire</span>
+          <span className={cn(style.label, style.grass)}>Grass</span>
+          <span className={cn(style.label, style.fire)}>Fire</span>
         </div>
       </div>
       <div className={style.pictureWrap}>
