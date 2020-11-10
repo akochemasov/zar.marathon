@@ -32,15 +32,13 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ titleName, attackValue, defen
           </div>
         </div>
         <div className={style.labelWrap}>
-          {
-            // @ts-ignore
-            types &&
-              types.map((type: string, i: number) => (
-                <span key={type} className={cn(style.label, style[type])}>
-                  {firstLetterUpper(type)}
-                </span>
-              ))
-          }
+          {types &&
+            types.map((type: string) => (
+              // @ts-ignore
+              <span key={type} className={cn(style.label, style[type])}>
+                {firstLetterUpper(type)}
+              </span>
+            ))}
         </div>
       </div>
       <div className={style.pictureWrap}>
