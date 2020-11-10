@@ -1,11 +1,11 @@
 import React from 'react';
 import Header from '../../components/Header';
 
-interface EmptyProps {
+interface EmptyPageProps {
   title?: string;
 }
 
-const Empty: React.FC<EmptyProps> = ({ title }) => {
+const EmptyPage: React.FC<EmptyPageProps> = ({ title }) => {
   return (
     <>
       <Header />
@@ -14,4 +14,4 @@ const Empty: React.FC<EmptyProps> = ({ title }) => {
   );
 };
 
-export default Empty;
+export default EmptyPage;

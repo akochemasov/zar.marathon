@@ -6,9 +6,9 @@ import Parallax from '../../components/Parrallax';
 import Layout from '../../components/Layout';
 import Heading from '../../components/Heading';
 
-import style from './Home.module.scss';
+import style from './HomePage.module.scss';
 
-const Home = () => {
+const HomePage = () => {
   return (
     <div className={style.root}>
       <Header />
@@ -35,4 +35,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

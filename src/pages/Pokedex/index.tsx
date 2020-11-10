@@ -1,9 +1,9 @@
 import React from 'react';
 import Header from '../../components/Header';
 
-import style from './Pokedex.module.scss';
+import style from './PokedexPage.module.scss';
 
-const Pokedex = () => {
+const PokedexPage = () => {
   return (
     <div className={style.root}>
       <Header />
@@ -11,4 +11,4 @@ const Pokedex = () => {
   );
 };
 
-export default Pokedex;
+export default PokedexPage;
