@@ -4,18 +4,23 @@ import PokemonCard from '../../components/PokemonCard';
 
 import style from './PokedexPage.module.scss';
 
+import POKEMONS from './pokemons';
+
 const PokedexPage = () => {
   return (
     <div className={style.root}>
       <Header />
-      <PokemonCard
-        key={1}
-        titleName="Charmander"
-        attackValue={52}
-        defenseValue={43}
-        img="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png"
-        types={['grass', 'poison']}
-      />
+
+      {POKEMONS.map((item) => (
+        <PokemonCard
+          key={item.id}
+          titleName={item.name}
+          attackValue={item.stats.attack}
+          defenseValue={item.stats.attack}
+          img={item.img}
+          types={item.types}
+        />
+      ))}
     </div>
   );
 };
