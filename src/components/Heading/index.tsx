@@ -3,14 +3,15 @@ import cn from 'classnames';
 
 import style from './Heading.module.scss';
 
-type Types = 'h1' | 'h2' | 'h3' | 'h4';
+type Sizes = 'h1' | 'h2' | 'h3' | 'h4';
 
 interface HeadingProps {
-  type: Types;
+  size: Sizes;
+  className?: string;
 }
 
-const Heading: React.FC<HeadingProps> = ({ children, type }) => (
-  <div className={cn(style.root, style[type])}>{children}</div>
+const Heading: React.FC<HeadingProps> = ({ children, size, className = '' }) => (
+  <div className={cn(style.root, style[size], className)}>{children}</div>
 );
 
 export default Heading;
