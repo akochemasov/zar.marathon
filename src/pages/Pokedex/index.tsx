@@ -1,20 +1,42 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PokemonCard from '../../components/PokemonCard';
 import Layout from '../../components/Layout';
 import Heading from '../../components/Heading';
 
 import style from './PokedexPage.module.scss';
 
-import POKEMONS from './pokemons';
+type Stats = {
+  attack: number;
+};
+
+interface IPokemon {
+  id: number;
+  name: string;
+  stats: Stats;
+  img: string;
+  types: string[];
+}
 
 const PokedexPage = () => {
+  const [totalPokemons, setTotalPokemons] = useState(0);
+  const [pokemons, setPokemons] = useState([]);
+
+  useEffect(() => {
+    fetch('http://zar.hosthot.ru/api/v1/pokemons')
+      .then((res) => res.json())
+      .then((data) => {
+        setTotalPokemons(data.total);
+        setPokemons(data.pokemons);
+      });
+  }, []);
+
   return (
     <Layout className={style.root}>
       <Heading size="h2" className={style.title}>
-        {0} <b>Pokemons</b> for you choose your favorite
+        {totalPokemons} <b>Pokemons</b> for you choose your favorite
       </Heading>
       <>
-        {POKEMONS.map((item) => (
+        {pokemons.map((item: IPokemon) => (
           <PokemonCard
             key={item.id}
             titleName={item.name}
