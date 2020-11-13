@@ -17,7 +17,7 @@ interface IPokemon {
   types: string[];
 }
 
-const PokedexPage = () => {
+const usePokemons = () => {
   const [totalPokemons, setTotalPokemons] = useState(0);
   const [pokemons, setPokemons] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -42,6 +42,17 @@ const PokedexPage = () => {
 
     getPokemos();
   }, []);
+
+  return {
+    totalPokemons,
+    pokemons,
+    isLoading,
+    isError,
+  };
+};
+
+const PokedexPage = () => {
+  const { totalPokemons, pokemons, isLoading, isError } = usePokemons();
 
   if (isLoading) {
     return <div className={style.loading}>Loading...</div>;
