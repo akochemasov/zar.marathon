@@ -1,5 +1,7 @@
 import React from 'react';
 import PokemonCard from '../../components/PokemonCard';
+import Layout from '../../components/Layout';
+import Heading from '../../components/Heading';
 
 import style from './PokedexPage.module.scss';
 
@@ -7,7 +9,10 @@ import POKEMONS from './pokemons';
 
 const PokedexPage = () => {
   return (
-    <div className={style.root}>
+    <Layout className={style.root}>
+      <Heading size="h2" className={style.title}>
+        {0} <b>Pokemons</b> for you choose your favorite
+      </Heading>
       <>
         {POKEMONS.map((item) => (
           <PokemonCard
@@ -20,7 +25,7 @@ const PokedexPage = () => {
           />
         ))}
       </>
-    </div>
+    </Layout>
   );
 };
 
