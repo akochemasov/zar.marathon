@@ -17,9 +17,13 @@ interface IPokemon {
   types: string[];
 }
 
+interface IData {
+  total: number;
+  pokemons: [];
+}
+
 const usePokemons = () => {
-  const [totalPokemons, setTotalPokemons] = useState(0);
-  const [pokemons, setPokemons] = useState([]);
+  const [data, setData] = useState<IData>({ total: 0, pokemons: [] });
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
 
@@ -29,10 +33,9 @@ const usePokemons = () => {
 
       try {
         const response = await fetch('http://zar.hosthot.ru/api/v1/pokemons');
-        const data = await response.json();
+        const result = await response.json();
 
-        setTotalPokemons(data.total);
-        setPokemons(data.pokemons);
+        setData(result);
       } catch (e) {
         setIsError(true);
       } finally {
@@ -44,15 +47,14 @@ const usePokemons = () => {
   }, []);
 
   return {
-    totalPokemons,
-    pokemons,
+    data,
     isLoading,
     isError,
   };
 };
 
 const PokedexPage = () => {
-  const { totalPokemons, pokemons, isLoading, isError } = usePokemons();
+  const { data, isLoading, isError } = usePokemons();
 
   if (isLoading) {
     return <div className={style.loading}>Loading...</div>;
@@ -65,10 +67,10 @@ const PokedexPage = () => {
   return (
     <Layout className={style.root}>
       <Heading size="h2" className={style.title}>
-        {totalPokemons} <b>Pokemons</b> for you choose your favorite
+        {data.total} <b>Pokemons</b> for you choose your favorite
       </Heading>
       <>
-        {pokemons.map((item: IPokemon) => (
+        {data.pokemons.map((item: IPokemon) => (
           <PokemonCard
             key={item.id}
             titleName={item.name}
