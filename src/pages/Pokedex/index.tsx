@@ -20,7 +20,8 @@ interface IPokemon {
 const PokedexPage = () => {
   const [totalPokemons, setTotalPokemons] = useState(0);
   const [pokemons, setPokemons] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -29,12 +30,21 @@ const PokedexPage = () => {
       .then((data) => {
         setTotalPokemons(data.total);
         setPokemons(data.pokemons);
+      })
+      .catch(() => {
+        setIsError(true);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   }, []);
 
   if (isLoading) {
     return <div className={style.loading}>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div className={style.error}>Something wrong!</div>;
   }
 
   return (
