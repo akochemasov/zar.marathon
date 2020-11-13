@@ -20,15 +20,22 @@ interface IPokemon {
 const PokedexPage = () => {
   const [totalPokemons, setTotalPokemons] = useState(0);
   const [pokemons, setPokemons] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     fetch('http://zar.hosthot.ru/api/v1/pokemons')
       .then((res) => res.json())
       .then((data) => {
         setTotalPokemons(data.total);
         setPokemons(data.pokemons);
+        setIsLoading(false);
       });
   }, []);
+
+  if (isLoading) {
+    return <div className={style.loading}>Loading...</div>;
+  }
 
   return (
     <Layout className={style.root}>
