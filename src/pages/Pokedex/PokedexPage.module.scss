@@ -2,5 +2,28 @@
 
 .root {
   min-height: 100vh;
-  background: linear-gradient(180deg, $color-third 0%, $color-primary 100%);
+}
+
+.title {
+  margin: 73px 0;
+}
+
+.loading {
+  font-style: normal;
+  font-size: 20px;
+  line-height: 41px;
+  letter-spacing: 3px;
+  text-align: center;
+  color: $color-dark;
+  margin: 20px 0;
+}
+
+.error {
+  font-style: normal;
+  font-size: 20px;
+  line-height: 41px;
+  letter-spacing: 3px;
+  text-align: center;
+  color: $color-error;
+  margin: 20px 0;
 }

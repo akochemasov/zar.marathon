@@ -1,18 +1,76 @@
-import React from 'react';
-import Header from '../../components/Header';
+import React, { useEffect, useState } from 'react';
 import PokemonCard from '../../components/PokemonCard';
+import Layout from '../../components/Layout';
+import Heading from '../../components/Heading';
 
 import style from './PokedexPage.module.scss';
 
-import POKEMONS from './pokemons';
+type Stats = {
+  attack: number;
+};
+
+interface IPokemon {
+  id: number;
+  name: string;
+  stats: Stats;
+  img: string;
+  types: string[];
+}
+
+interface IData {
+  total: number;
+  pokemons: [];
+}
+
+const usePokemons = () => {
+  const [data, setData] = useState<IData>({ total: 0, pokemons: [] });
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    const getPokemos = async () => {
+      setIsLoading(true);
+
+      try {
+        const response = await fetch('http://zar.hosthot.ru/api/v1/pokemons');
+        const result = await response.json();
+
+        setData(result);
+      } catch (e) {
+        setIsError(true);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    getPokemos();
+  }, []);
+
+  return {
+    data,
+    isLoading,
+    isError,
+  };
+};
 
 const PokedexPage = () => {
-  return (
-    <div className={style.root}>
-      <Header />
+  const { data, isLoading, isError } = usePokemons();
 
-      <div>
-        {POKEMONS.map((item) => (
+  if (isLoading) {
+    return <div className={style.loading}>Loading...</div>;
+  }
+
+  if (isError) {
+    return <div className={style.error}>Something wrong!</div>;
+  }
+
+  return (
+    <Layout className={style.root}>
+      <Heading size="h2" className={style.title}>
+        {data.total} <b>Pokemons</b> for you choose your favorite
+      </Heading>
+      <>
+        {data.pokemons.map((item: IPokemon) => (
           <PokemonCard
             key={item.id}
             titleName={item.name}
@@ -22,8 +80,8 @@ const PokedexPage = () => {
             types={item.types}
           />
         ))}
-      </div>
-    </div>
+      </>
+    </Layout>
   );
 };
 

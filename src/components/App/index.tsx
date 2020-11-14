@@ -2,9 +2,19 @@ import React from 'react';
 import { useRoutes } from 'hookrouter';
 import routes from '../../routes';
 import NotFoundPage from '../../pages/NotFound';
+import Header from '../Header';
 
 const App = () => {
-  return useRoutes(routes) || <NotFoundPage />;
+  const match = useRoutes(routes);
+
+  return match ? (
+    <>
+      <Header />
+      {match}
+    </>
+  ) : (
+    <NotFoundPage />
+  );
 };
 
 export default App;
