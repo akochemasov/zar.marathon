@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useData from '../../hook/getData';
 import PokemonCard from '../../components/PokemonCard';
 import Layout from '../../components/Layout';
 import Heading from '../../components/Heading';
-import req from '../../utils/request';
 
 import style from './PokedexPage.module.scss';
 
@@ -18,43 +18,8 @@ interface IPokemon {
   types: string[];
 }
 
-interface IData {
-  total: number;
-  pokemons: [];
-}
-
-const usePokemons = () => {
-  const [data, setData] = useState<IData>({ total: 0, pokemons: [] });
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    const getPokemos = async () => {
-      setIsLoading(true);
-
-      try {
-        const result = await req('getPokemons');
-
-        setData(result);
-      } catch (e) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    getPokemos();
-  }, []);
-
-  return {
-    data,
-    isLoading,
-    isError,
-  };
-};
-
 const PokedexPage = () => {
-  const { data, isLoading, isError } = usePokemons();
+  const { data, isLoading, isError } = useData('getPokemons');
 
   if (isLoading) {
     return <div className={style.loading}>Loading...</div>;
@@ -67,9 +32,11 @@ const PokedexPage = () => {
   return (
     <Layout className={style.root}>
       <Heading size="h2" className={style.title}>
+        {/* @ts-ignore */}
         {data.total} <b>Pokemons</b> for you choose your favorite
       </Heading>
       <>
+        {/* @ts-ignore */}
         {data.pokemons.map((item: IPokemon) => (
           <PokemonCard
             key={item.id}
