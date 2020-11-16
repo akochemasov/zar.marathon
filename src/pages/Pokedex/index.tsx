@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import PokemonCard from '../../components/PokemonCard';
 import Layout from '../../components/Layout';
 import Heading from '../../components/Heading';
+import req from '../../utils/request';
 
 import style from './PokedexPage.module.scss';
-import config from '../../config';
 
 type Stats = {
   attack: number;
@@ -31,11 +31,9 @@ const usePokemons = () => {
   useEffect(() => {
     const getPokemos = async () => {
       setIsLoading(true);
-      const url = `${config.client.server.protocol}://${config.client.server.host}/${config.client.endpoint.getPokemons.url.pathname}`;
 
       try {
-        const response = await fetch(url);
-        const result = await response.json();
+        const result = await req('getPokemons');
 
         setData(result);
       } catch (e) {
