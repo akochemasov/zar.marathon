@@ -48,7 +48,13 @@ const PokedexPage = () => {
         {!isLoading && data.total} <b>Pokemons</b> for you choose your favorite
       </Heading>
       <div>
-        <input type="text" value={searchValue} onChange={handleOnChange} />
+        <input
+          className={style.input}
+          type="text"
+          value={searchValue}
+          onChange={handleOnChange}
+          placeholder="Encuentra tu pokémon..."
+        />
       </div>
       <>
         {/* @ts-ignore */}
