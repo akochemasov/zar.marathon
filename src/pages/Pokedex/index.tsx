@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
 import useData from '../../hook/getData';
 import PokemonCard from '../../components/PokemonCard';
 import Layout from '../../components/Layout';
@@ -20,17 +20,9 @@ interface IPokemon {
 
 const PokedexPage = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [query, setQuery] = useState({});
 
-  /* todo: убрали JSON.stringify, но надо помнить, что нужно передавать memo */
-  const query = useMemo(
-    () => ({
-      name: searchValue,
-    }),
-    [searchValue],
-  );
-
-  // @ts-ignore
-  const { data, isLoading, isError } = useData('getPokemons', query);
+  const { data, isLoading, isError } = useData('getPokemons', query, [searchValue]);
 
   /* todo: закомментировал, чтобы не терять фокус в input */
   // if (isLoading) {
@@ -43,6 +35,10 @@ const PokedexPage = () => {
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
+    setQuery((data) => ({
+      ...data,
+      name: e.target.value,
+    }));
   };
 
   return (
