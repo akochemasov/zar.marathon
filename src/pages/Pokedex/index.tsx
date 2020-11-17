@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useData from '../../hook/getData';
 import PokemonCard from '../../components/PokemonCard';
 import Layout from '../../components/Layout';
@@ -19,34 +19,41 @@ interface IPokemon {
 }
 
 const PokedexPage = () => {
-  const { data, isLoading, isError } = useData('getPokemons');
-
-  if (isLoading) {
-    return <div className={style.loading}>Loading...</div>;
-  }
+  const [searchValue, setSearchValue] = useState('');
+  const { data, isLoading, isError } = useData('getPokemons', {
+    name: searchValue,
+  });
 
   if (isError) {
     return <div className={style.error}>Something wrong!</div>;
   }
 
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchValue(e.target.value);
+  };
+
   return (
     <Layout className={style.root}>
       <Heading size="h2" className={style.title}>
         {/* @ts-ignore */}
-        {data.total} <b>Pokemons</b> for you choose your favorite
+        {!isLoading && data.total} <b>Pokemons</b> for you choose your favorite
       </Heading>
+      <div>
+        <input type="text" value={searchValue} onChange={handleOnChange} />
+      </div>
       <>
         {/* @ts-ignore */}
-        {data.pokemons.map((item: IPokemon) => (
-          <PokemonCard
-            key={item.id}
-            titleName={item.name}
-            attackValue={item.stats.attack}
-            defenseValue={item.stats.attack}
-            img={item.img}
-            types={item.types}
-          />
-        ))}
+        {!isLoading &&
+          data.pokemons.map((item: IPokemon) => (
+            <PokemonCard
+              key={item.id}
+              titleName={item.name}
+              attackValue={item.stats.attack}
+              defenseValue={item.stats.attack}
+              img={item.img}
+              types={item.types}
+            />
+          ))}
       </>
     </Layout>
   );
