@@ -18,9 +18,16 @@ interface IPokemon {
   types: string[];
 }
 
+interface IQuery {
+  limit: number;
+  name?: string;
+}
+
 const PokedexPage = () => {
   const [searchValue, setSearchValue] = useState('');
-  const [query, setQuery] = useState({});
+  const [query, setQuery] = useState<IQuery>({
+    limit: 12,
+  });
 
   const { data, isLoading, isError } = useData('getPokemons', query, [searchValue]);
 
