@@ -40,7 +40,7 @@ const PokedexPage = () => {
     return <div className={style.error}>Something wrong!</div>;
   }
 
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
     setQuery((data) => ({
       ...data,
@@ -59,7 +59,7 @@ const PokedexPage = () => {
           className={style.input}
           type="text"
           value={searchValue}
-          onChange={handleOnChange}
+          onChange={handleSearchChange}
           placeholder="Encuentra tu pokémon..."
         />
       </div>
