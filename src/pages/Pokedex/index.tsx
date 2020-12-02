@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import useData from '../../hook/getData';
+import useDebounce from '../../hook/useDebounce';
 import PokemonCard from '../../components/PokemonCard';
 import Layout from '../../components/Layout';
 import Heading from '../../components/Heading';
@@ -28,8 +29,9 @@ const PokedexPage = () => {
   const [query, setQuery] = useState<IQuery>({
     limit: 12,
   });
+  const debouncedValue = useDebounce(searchValue, 1000);
 
-  const { data, isLoading, isError } = useData('getPokemons', query, [searchValue]);
+  const { data, isLoading, isError } = useData('getPokemons', query, [debouncedValue]);
 
   /* todo: закомментировал, чтобы не терять фокус в input */
   // if (isLoading) {
