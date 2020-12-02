@@ -6,18 +6,7 @@ import Layout from '../../components/Layout';
 import Heading from '../../components/Heading';
 
 import style from './PokedexPage.module.scss';
-
-type Stats = {
-  attack: number;
-};
-
-interface IPokemon {
-  id: number;
-  name: string;
-  stats: Stats;
-  img: string;
-  types: string[];
-}
+import { IPokemons, PokemonsRequest } from '../../interface/pokemons';
 
 interface IQuery {
   limit: number;
@@ -31,7 +20,7 @@ const PokedexPage = () => {
   });
   const debouncedValue = useDebounce(searchValue, 1000);
 
-  const { data, isLoading, isError } = useData('getPokemons', query, [debouncedValue]);
+  const { data, isLoading, isError } = useData<IPokemons>('getPokemons', query, [debouncedValue]);
 
   /* todo: закомментировал, чтобы не терять фокус в input */
   // if (isLoading) {
@@ -44,7 +33,7 @@ const PokedexPage = () => {
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchValue(e.target.value);
-    setQuery((data) => ({
+    setQuery((data: IQuery) => ({
       ...data,
       name: e.target.value,
     }));
@@ -53,8 +42,7 @@ const PokedexPage = () => {
   return (
     <Layout className={style.root}>
       <Heading size="h2" className={style.title}>
-        {/* @ts-ignore */}
-        {!isLoading && data.total} <b>Pokemons</b> for you choose your favorite
+        {!isLoading && data && data.total} <b>Pokemons</b> for you choose your favorite
       </Heading>
       <div>
         <input
@@ -66,9 +54,9 @@ const PokedexPage = () => {
         />
       </div>
       <>
-        {/* @ts-ignore */}
         {!isLoading &&
-          data.pokemons.map((item: IPokemon) => (
+          data &&
+          data.pokemons.map((item: PokemonsRequest) => (
             <PokemonCard
               key={item.id}
               titleName={item.name}
