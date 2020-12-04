@@ -3,8 +3,7 @@ import config from '../config';
 function getUrlWithParamsConfig(endpointConfig: string, query: object) {
   const url = {
     ...config.client.server,
-    // @ts-ignore
-    ...config.client.endpoint[endpointConfig].url,
+    ...config.client.endpoint[endpointConfig as keyof typeof config.client.endpoint].url,
     query: {
       ...query,
     },
