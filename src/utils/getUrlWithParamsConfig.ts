@@ -1,13 +1,27 @@
 import config from '../config';
 
-function getUrlWithParamsConfig(endpointConfig: string, query: object) {
+function getUrlWithParamsConfig(endpointConfig: string, query: any) {
   const url = {
     ...config.client.server,
     ...config.client.endpoint[endpointConfig as keyof typeof config.client.endpoint].url,
-    query: {
-      ...query,
-    },
+    query: {},
   };
+
+  /* api/v1/pokemon/{id} заменить на api/v1/pokemon/{query[val]} */
+  const pathname = Object.keys(query).reduce((acc, val) => {
+    if (acc.indexOf(`{${val}}`) !== -1) {
+      const result = acc.replace(`{${val}}`, query[val]);
+      delete query[val];
+      return result;
+    }
+    return acc;
+  }, url.pathname);
+
+  url.pathname = pathname;
+  url.query = {
+    ...query,
+  };
+
   return url;
 }
 
