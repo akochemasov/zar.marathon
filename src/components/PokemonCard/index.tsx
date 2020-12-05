@@ -1,6 +1,7 @@
 import React from 'react';
 import cn from 'classnames';
 import Heading from '../Heading';
+import toCapitalizeFirstLetter from '../../utils/toCapitalizeFirstLetter';
 
 import style from './PokemonCard.module.scss';
 
@@ -13,13 +14,11 @@ interface PokemonCardProps {
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({ titleName, attackValue, defenseValue, img, types }) => {
-  const firstLetterUpper = (str: string) => `${str[0].toUpperCase()}${str.slice(1)}`;
-
   return (
     <div className={style.root}>
       <div className={style.infoWrap}>
         <Heading size="h3" className={style.titleName}>
-          {firstLetterUpper(titleName)}
+          {toCapitalizeFirstLetter(titleName)}
         </Heading>
         <div className={style.statWrap}>
           <div className={style.statItem}>
@@ -35,7 +34,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ titleName, attackValue, defen
           {types &&
             types.map((type: string) => (
               <span key={type} className={cn(style.label, style[type as keyof typeof style])}>
-                {firstLetterUpper(type)}
+                {toCapitalizeFirstLetter(type)}
               </span>
             ))}
         </div>
